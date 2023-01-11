@@ -15,7 +15,7 @@ scaler = joblib.load("scaler")
 #lstm_model: Sequential = load_model("lstm.hdf5")
 #gru_model: Sequential = load_model("gru.hdf5")
 arima_model = OLSResults.load("arima.pickle")
-sarimax_model = OLSResults.load("sarimax.pickle")
+#sarimax_model = OLSResults.load("sarimax.pickle")
 
 
 class TensorRequest(BaseModel):
