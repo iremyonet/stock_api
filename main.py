@@ -7,7 +7,7 @@ from statsmodels.regression.linear_model import OLSResults
 from pandas import DataFrame
 
 from pydantic import BaseModel
-from keras.models import load_model
+#from keras.models import load_model
 
 app = FastAPI()
 
@@ -38,36 +38,36 @@ def prepare(request: TensorRequest):
     return numpy.expand_dims(array, 0)
 
 
-#@app.post("/lstm")
-#async def lstm(request: TensorRequest):
-#    array = prepare(request)
-#
-#    result = lstm_model.predict(x=array)
-#
-#    result = scaler.inverse_transform(result)
-#
-#    value = result[0, 0]
-#    value = value.item()
-#
-#    print(value)
-#
-#    return value
+@app.post("/lstm")
+async def lstm(request: TensorRequest):
+    array = prepare(request)
+
+    result = lstm_model.predict(x=array)
+
+    result = scaler.inverse_transform(result)
+
+    value = result[0, 0]
+    value = value.item()
+
+    print(value)
+
+    return value
 
 
-#@app.post("/gru")
-#async def gru(request: TensorRequest):
-#    array = prepare(request)
-#
-#    result = gru_model.predict(x=array)
-#
-#    result = scaler.inverse_transform(result)
-#
-#    value = result[0, 0]
-#    value = value.item()
-#
-#    print(value)
-#
-#    return value
+@app.post("/gru")
+async def gru(request: TensorRequest):
+    array = prepare(request)
+
+    result = gru_model.predict(x=array)
+
+    result = scaler.inverse_transform(result)
+
+    value = result[0, 0]
+    value = value.item()
+
+    print(value)
+
+    return value
 
 
 @app.post("/arima")
